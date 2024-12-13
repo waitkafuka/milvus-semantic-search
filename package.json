@@ -11,6 +11,7 @@
     "@zilliz/milvus2-sdk-node": "^2.3.3",
     "dotenv": "^16.3.1",
     "mysql2": "^3.6.5",
-    "openai": "^4.24.1"
+    "openai": "^4.24.1",
+    "redis": "4.7.0"
   }
 }

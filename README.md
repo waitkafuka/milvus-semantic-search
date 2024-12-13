@@ -169,16 +169,16 @@ npm run start
    - 在 Milvus 中搜索相似向量
    - 返回匹配的内容及其相似度分数
 
-## 项目结构  
+## 项目结构
 
 src/  
-├── config/    
-│  └── database.js # 数据库配置  
+├── config/  
+│   └── database.js        # 数据库配置  
 ├── services/  
-│ ├── milvusService.js # Milvus 相关操作  
-│ ├── mysqlService.js # MySQL 相关操作  
-│ └── openaiService.js # OpenAI API 调用  
-└── index.js # 主程序入口  
+│   ├── milvusService.js   # Milvus 相关操作  
+│   ├── mysqlService.js    # MySQL 相关操作  
+│   └── openaiService.js   # OpenAI API 调用  
+└── index.js              # 主程序入口  
 
 
 ## 注意事项
