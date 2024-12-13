@@ -15,6 +15,7 @@ export const mysqlConfig = {
 // Milvus connection configuration
 export const milvusConfig = {
   address: `${process.env.MILVUS_HOST}:${process.env.MILVUS_PORT}`,
+  database: process.env.MILVUS_DATABASE,
   collectionName: process.env.MILVUS_COLLECTION,
 };
 

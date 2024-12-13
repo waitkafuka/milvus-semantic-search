@@ -57,7 +57,7 @@ async function main() {
   // await initializeSystem();
   
   // Example search
-  const searchQuery = "路途";
+  const searchQuery = "苹果";
   const searchResults = await searchContent(searchQuery);
   console.log('Search results:', searchResults);
 }
