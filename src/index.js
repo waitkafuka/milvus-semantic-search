@@ -57,7 +57,7 @@ async function main() {
   // await initializeSystem();
   
   // Example search
-  const searchQuery = "哪些是水果";
+  const searchQuery = "路途";
   const searchResults = await searchContent(searchQuery);
   console.log('Search results:', searchResults);
 }
