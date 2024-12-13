@@ -1,0 +1,17 @@
+# MySQL Configuration
+MYSQL_HOST=localhost
+MYSQL_USER=root
+MYSQL_PASSWORD=your_password
+MYSQL_DATABASE=your_database
+
+# Milvus Configuration
+MILVUS_HOST=127.0.0.1
+MILVUS_PORT=19530
+# MILVUS_HOST=10.1.1.17
+# MILVUS_PORT=21999
+MILVUS_COLLECTION=your_collection
+MILVUS_DATABASE=your_database
+
+# OpenAI Configuration
+OPENAI_BASE_URL=your_base_url
+OPENAI_API_KEY=your_api_key 
