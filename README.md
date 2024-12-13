@@ -2,6 +2,89 @@
 
 这是一个基于 MySQL、Milvus 和 OpenAI 实现的语义搜索系统。该系统能够将文本内容转换为向量并存储，然后基于语义相似度进行搜索。
 
+## Milvus 安装
+
+本项目使用 Docker Compose 来部署 Milvus 单机版。
+
+### 前置要求
+
+- Docker >= 19.03
+- Docker Compose >= 1.25.0
+- 至少 2GB 可用内存
+
+### 安装步骤
+
+1. 进入 Milvus Docker 目录：
+```bash
+cd milvus-docker
+```
+
+2. 启动 Milvus 服务：
+```bash
+docker-compose up -d
+```
+
+这将启动以下服务：
+- Milvus standalone: 向量数据库主服务
+- Etcd: 元数据存储
+- MinIO: 对象存储
+- Attu: Milvus 的 Web 管理界面
+
+### 验证安装
+
+1. 检查容器状态：
+```bash
+docker-compose ps
+```
+
+所有服务应该处于 `Up` 状态。
+
+2. 访问 Attu 管理界面：
+   - 打开浏览器访问：http://localhost:8000
+   - 使用默认连接信息连接到 Milvus
+
+### 服务端口
+
+- Milvus 服务: 19530 (gRPC)
+- Attu 管理界面: 8000
+- MinIO: 9000
+- Etcd: 2379
+
+### 数据持久化
+
+数据默认存储在 `milvus-docker/volumes/` 目录下：
+- `volumes/milvus/`: Milvus 数据
+- `volumes/etcd/`: Etcd 数据
+- `volumes/minio/`: MinIO 数据
+
+### 停止服务
+
+```bash
+docker-compose down
+```
+
+### 完全清理
+
+如需删除所有数据并重新开始：
+```bash
+docker-compose down -v
+rm -rf volumes/
+```
+
+### 常见问题
+
+1. 内存不足
+   - 症状：Milvus 容器启动失败
+   - 解决：确保系统至少有 2GB 可用内存
+
+2. 端口冲突
+   - 症状：服务启动失败，提示端口被占用
+   - 解决：修改 docker-compose.yml 中的端口映射
+
+3. 性能调优
+   - 可以通过修改 docker-compose.yml 中的环境变量来调整性能参数
+   - 详细参数说明请参考 Milvus 官方文档
+
 ## 技术栈
 
 - MySQL: 存储原始文本内容
@@ -20,8 +103,8 @@
 
 1. 克隆项目并安装依赖： 
 ```bash
-git clone [repository-url]
-cd semantic-search-demo
+git clone https://github.com/waitkafuka/milvus-semantic-search.git
+cd milvus-semantic-search
 npm install
 ```
 
