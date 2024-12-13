@@ -54,6 +54,27 @@ services:
     depends_on:
       - standalone
 
+  redis:
+    container_name: milvus-redis
+    image: redis:alpine
+    command: redis-server /usr/local/etc/redis/redis.conf
+    environment:
+      - REDIS_PASSWORD=${REDIS_PASSWORD}
+    ports:
+      - "6379:6379"
+    volumes:
+      - ${DOCKER_VOLUME_DIRECTORY:-.}/volumes/redis:/data
+      - ${DOCKER_VOLUME_DIRECTORY:-.}/redis.conf:/usr/local/etc/redis/redis.conf
+    restart: always
+    networks:
+      - default
+
+volumes:
+  default:
+    driver: local
+  redis_data:
+    driver: local
+
 networks:
   default:
     name: milvus
