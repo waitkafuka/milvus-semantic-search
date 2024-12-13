@@ -15,3 +15,6 @@ MILVUS_DATABASE=your_database
 # OpenAI Configuration
 OPENAI_BASE_URL=your_base_url
 OPENAI_API_KEY=your_api_key 
+
+# Redis Configuration
+REDIS_URL=redis://localhost:6379
