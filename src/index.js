@@ -46,6 +46,10 @@ async function searchContent(query, limit = 5) {
     
     return results;
   } catch (error) {
+    if (error.message.includes('Collection does not exist')) {
+      console.error('Collection not initialized. Please run initializeSystem() first.');
+      return [];
+    }
     console.error('Error during content search:', error);
     throw error;
   }
@@ -53,13 +57,17 @@ async function searchContent(query, limit = 5) {
 
 // Example usage
 async function main() {
-  // Initialize the system (only need to run once)
-  // await initializeSystem();
-  
-  // Example search
-  const searchQuery = "苹果";
-  const searchResults = await searchContent(searchQuery);
-  console.log('Search results:', searchResults);
+  try {
+    // 首次运行时，取消下面这行的注释来初始化系统
+    await initializeSystem();
+    
+    // Example search
+    const searchQuery = "苹果";
+    const searchResults = await searchContent(searchQuery);
+    console.log('Search results:', searchResults);
+  } catch (error) {
+    console.error('Error in main:', error);
+  }
 }
 
 main().catch(console.error); 
